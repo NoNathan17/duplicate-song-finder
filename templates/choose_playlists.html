@@ -1,34 +1,41 @@
+<!-- templates/choose_playlists.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Playlists</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <div class="container">
+        <h1>Select Playlists to Compare</h1>
+        
+        <form method="POST">
+            <div class="select-container">
+                <div class="select-dropdown">
+                    <label for="playlist1">Playlist 1:</label>
+                    <select name="playlist" id="playlist1" required>
+                        <option value="" disabled selected>Choose a playlist</option>
+                        {% for playlist in playlists %}
+                            <option value="{{ playlist.id }}">{{ playlist.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-<h1>Choose Playlists to Compare</h1>
-
-<form method="POST">
-    <p>Select playlist:</p>
-    <select name="playlist" required>
-        <option value="">Select playlist</option>
-        {% for playlist in playlists %}
-            <option value="{{ playlist.id }}">{{ playlist.name }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
-
-    <p>Select playlist:</p>
-    <select name="playlist" required>
-        <option value="">Select playlist</option>
-        {% for playlist in playlists %}
-            <option value="{{ playlist.id }}">{{ playlist.name }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
-
-    <button type="submit">Find Duplicates</button>
-</form>
+                <div class="select-dropdown">
+                    <label for="playlist2">Playlist 2:</label>
+                    <select name="playlist" id="playlist2" required>
+                        <option value="" disabled selected>Choose a playlist</option>
+                        {% for playlist in playlists %}
+                            <option value="{{ playlist.id }}">{{ playlist.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit">Find Duplicates</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!-- templates/find_duplicates.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Songs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Comparing Playlists: {{ playlist1_name }} and {{ playlist2_name }}</h2>
+
+        {% if duplicate_songs %}
+            <h3>Common Songs:</h3>
+            <ul class="playlist-list">
+                {% for song in duplicate_songs %}
+                    <li>
+                        {{ song }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No duplicate songs found between the playlists.</p>
+        {% endif %}
+
+        <a href="{{ url_for('choose_playlists') }}" class="button-link">Back to Playlist Selection</a>
+    </div>
+</body>
+</html>

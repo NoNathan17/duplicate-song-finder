@@ -89,24 +89,15 @@ def find_duplicates(playlist_id1, playlist_id2):
 
     duplicate_song_ids = playlist1_song_ids & playlist2_song_ids
 
-    if not duplicate_song_ids:
-        return f"No duplicates found between Playlist 1 and Playlist 2."
-
     duplicate_songs = []
     for track_id in duplicate_song_ids:
         track = sp.track(track_id)
         duplicate_songs.append(f"{track['name']} by {track['artists'][0]['name']}")
 
-    return f"""
-        <h2>Comparing Playlists:</h2>
-        <p>Playlist 1: {playlist1_name}</p>
-        <p>Playlist 2: {playlist2_name}</p>
-        <h3>Duplicate Songs:</h3>
-        <ul>
-            {"".join([f'<li>{song}</li>' for song in duplicate_songs])}
-        </ul>
-        <a href="{url_for('choose_playlists')}">Back to Playlist Selection</a>
-    """
+    return render_template('find_duplicates.html', 
+                           playlist1_name=playlist1_name,
+                           playlist2_name=playlist2_name,
+                           duplicate_songs=duplicate_songs)
 
 @app.route('/logout')
 def logout():
