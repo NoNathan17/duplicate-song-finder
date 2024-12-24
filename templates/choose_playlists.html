@@ -1,4 +1,3 @@
-<!-- templates/choose_playlists.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <header>
+        <a href="{{ url_for('logout') }}" class="button-link">Logout</a>
+    </header>
     <div class="container">
         <h1>Select Playlists to Compare</h1>
         

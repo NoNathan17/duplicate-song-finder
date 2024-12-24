@@ -1,4 +1,3 @@
-<!-- templates/find_duplicates.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <header>
+        <a href="{{ url_for('logout') }}" class="button-link">Logout</a>
+    </header>
     <div class="container">
         <h2>Comparing Playlists: {{ playlist1_name }} and {{ playlist2_name }}</h2>
 
